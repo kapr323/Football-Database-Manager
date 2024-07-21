@@ -1,0 +1,56 @@
+{
+    "matches": [
+        {
+            "home_team": "Team A",
+            "away_team": "Team B",
+            "result": "3:1"
+        },
+        {
+            "home_team": "Team C",
+            "away_team": "Team D",
+            "result": "2:2"
+        },
+        {
+            "home_team": "Team A",
+            "away_team": "Team D",
+            "result": "1:0"
+        },
+        {
+            "home_team": "Chelsea",
+            "away_team": "Team C",
+            "result": "6:0"
+        },
+        {
+            "home_team": "Team A",
+            "away_team": "Team C",
+            "result": "2:4"
+        }
+    ],
+    "stats": [
+        {
+            "player": "Player 1",
+            "team": "Team A",
+            "goals": 2
+        },
+        {
+            "player": "Player 2",
+            "team": "Team A",
+            "goals": 1
+        },
+        {
+            "player": "Player 3",
+            "team": "Team B",
+            "goals": 1
+        },
+        {
+            "player": "Player 4",
+            "team": "Team C",
+            "goals": 2
+        },
+        {
+            "player": "Player 5",
+            "team": "Team D",
+            "goals": 1
+        }
+    ]
+}
