@@ -1,11 +1,11 @@
-import sys
 import os
 import json
-from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QFileDialog, \
-    QLineEdit, QMessageBox, QDialog, QGridLayout, QTableWidget, QTableWidgetItem, QWidget, QTabWidget, QAction, QMenu, QMenuBar
+from PyQt5.QtWidgets import QMainWindow, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QFileDialog, \
+    QTableWidget, QTableWidgetItem, QWidget, QTabWidget, QAction, QMenuBar, QMessageBox
 from PyQt5.QtGui import QPixmap, QFont, QIcon
 from PyQt5.QtCore import Qt
-
+from new_match_dialog import NewMatchDialog
+from utils import calculate_team_statistics
 
 class MainApp(QMainWindow):
     def __init__(self):
@@ -128,27 +128,8 @@ class MainApp(QMainWindow):
         self.teams_table.setColumnHidden(column, not visible)
 
     def apply_styles(self):
-        self.setStyleSheet("""
-            QMainWindow {
-                background-color: #f0f8ff;
-            }
-            QPushButton {
-                background-color: #87CEFA;
-                border: none;
-                padding: 10px;
-                font-size: 14px;
-            }
-            QPushButton:hover {
-                background-color: #4682B4;
-                color: #fff;
-            }
-            QTableWidget {
-                background-color: #ffffff;
-                border: 1px solid #87CEFA;
-                padding: 5px;
-                font-size: 14px;
-            }
-        """)
+        with open("styles.qss", "r") as f:
+            self.setStyleSheet(f.read())
 
     def open_file_dialog(self):
         options = QFileDialog.Options()
@@ -181,7 +162,7 @@ class MainApp(QMainWindow):
             self.matches_table.setItem(row_position, 3, QTableWidgetItem('Edit'))
 
     def update_teams_table(self):
-        teams_stats = self.calculate_team_statistics()
+        teams_stats = calculate_team_statistics(self.data)
         self.teams_table.setRowCount(0)
         for team, stats in sorted(teams_stats.items(), key=lambda x: (
         -x[1]['points'], -x[1]['goal_difference'], -x[1]['goals_for'], -x[1]['won'], -x[1]['drawn'])):
@@ -206,47 +187,6 @@ class MainApp(QMainWindow):
             if i != 0:  # Adjust other columns to be smaller
                 self.teams_table.setColumnWidth(i, 50)
 
-    def calculate_team_statistics(self):
-        teams_stats = {}
-        for match in self.data.get('matches', []):
-            home_team = match['home_team']
-            away_team = match['away_team']
-            home_goals, away_goals = map(int, match['result'].split(':'))
-
-            if home_team not in teams_stats:
-                teams_stats[home_team] = {'played': 0, 'won': 0, 'drawn': 0, 'lost': 0, 'goals_for': 0,
-                                          'goals_against': 0, 'goal_difference': 0, 'points': 0}
-            if away_team not in teams_stats:
-                teams_stats[away_team] = {'played': 0, 'won': 0, 'drawn': 0, 'lost': 0, 'goals_for': 0,
-                                          'goals_against': 0, 'goal_difference': 0, 'points': 0}
-
-            teams_stats[home_team]['played'] += 1
-            teams_stats[away_team]['played'] += 1
-            teams_stats[home_team]['goals_for'] += home_goals
-            teams_stats[home_team]['goals_against'] += away_goals
-            teams_stats[away_team]['goals_for'] += away_goals
-            teams_stats[away_team]['goals_against'] += home_goals
-            teams_stats[home_team]['goal_difference'] = teams_stats[home_team]['goals_for'] - teams_stats[home_team][
-                'goals_against']
-            teams_stats[away_team]['goal_difference'] = teams_stats[away_team]['goals_for'] - teams_stats[away_team][
-                'goals_against']
-
-            if home_goals > away_goals:
-                teams_stats[home_team]['won'] += 1
-                teams_stats[away_team]['lost'] += 1
-                teams_stats[home_team]['points'] += 3
-            elif home_goals < away_goals:
-                teams_stats[away_team]['won'] += 1
-                teams_stats[home_team]['lost'] += 1
-                teams_stats[away_team]['points'] += 3
-            else:
-                teams_stats[home_team]['drawn'] += 1
-                teams_stats[away_team]['drawn'] += 1
-                teams_stats[home_team]['points'] += 1
-                teams_stats[away_team]['points'] += 1
-
-        return teams_stats
-
     def update_stats_table(self):
         self.stats_table.setRowCount(0)
         stats = self.data.get('stats', [])
@@ -270,47 +210,3 @@ class MainApp(QMainWindow):
         with open(self.current_file, 'w') as f:
             json.dump(self.data, f, indent=4)
         QMessageBox.information(self, 'Success', 'File saved successfully!')
-
-
-class NewMatchDialog(QDialog):
-    def __init__(self, parent=None):
-        super().__init__(parent)
-        self.setWindowTitle('New Match')
-        self.layout = QGridLayout(self)
-        self.home_team_input = QLineEdit(self)
-        self.away_team_input = QLineEdit(self)
-        self.result_input = QLineEdit(self)
-        self.layout.addWidget(QLabel('Home Team:'), 0, 0)
-        self.layout.addWidget(self.home_team_input, 0, 1)
-        self.layout.addWidget(QLabel('Away Team:'), 0, 2)
-        self.layout.addWidget(self.away_team_input, 0, 3)
-        self.layout.addWidget(QLabel('FT Result:'), 0, 4)
-        self.layout.addWidget(self.result_input, 0, 5)
-        self.save_button = QPushButton('Save', self)
-        self.save_button.clicked.connect(self.save_match)
-        self.layout.addWidget(self.save_button, 1, 0, 1, 6)
-
-    def save_match(self):
-        home_team = self.home_team_input.text()
-        away_team = self.away_team_input.text()
-        result = self.result_input.text()
-        if home_team and away_team and result:
-            self.match = {
-                'home_team': home_team,
-                'away_team': away_team,
-                'result': result
-            }
-            self.accept()
-        else:
-            QMessageBox.warning(self, 'Error', 'Please fill in all fields!')
-
-
-def main():
-    app = QApplication(sys.argv)
-    main_window = MainApp()
-    main_window.show()
-    sys.exit(app.exec_())
-
-
-if __name__ == '__main__':
-    main()

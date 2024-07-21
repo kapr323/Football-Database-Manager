@@ -1,0 +1,19 @@
+QMainWindow {
+    background-color: #f0f8ff;
+}
+QPushButton {
+    background-color: #87CEFA;
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+}
+QPushButton:hover {
+    background-color: #4682B4;
+    color: #fff;
+}
+QTableWidget {
+    background-color: #ffffff;
+    border: 1px solid #87CEFA;
+    padding: 5px;
+    font-size: 14px;
+}
