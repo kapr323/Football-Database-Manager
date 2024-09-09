@@ -1,0 +1,25 @@
+{
+    "tournament": {
+        "type": "League",
+        "phase": "Main",
+        "season": 77
+    },
+    "teams": [
+        {
+            "id": 34,
+            "players": []
+        },
+        {
+            "id": 22,
+            "players": []
+        }
+    ],
+    "matches": [
+        {
+            "id": 1,
+            "home_team": null,
+            "away_team": null,
+            "status": "Scheduled"
+        }
+    ]
+}
