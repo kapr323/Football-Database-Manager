@@ -14,7 +14,7 @@ class MainApp(QMainWindow):
         self.setGeometry(100, 100, 580, 720)
 
         # Set the application icon
-        self.setWindowIcon(QIcon('pngwing.com.png'))
+        self.setWindowIcon(QIcon('AppFiles/pngwing.com.png'))
 
         self.central_widget = QTabWidget()
         self.setCentralWidget(self.central_widget)
@@ -47,7 +47,7 @@ class MainApp(QMainWindow):
 
     def add_background_logo(self, layout):
         background_label = QLabel(self)
-        pixmap = QPixmap('pngwing.com.png')
+        pixmap = QPixmap('AppFiles/pngwing.com.png')
         pixmap_width = pixmap.width()
         pixmap_height = pixmap.height()
         desired_width = int(self.width() * 0.3)

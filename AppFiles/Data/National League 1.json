@@ -1,0 +1,303 @@
+{
+  "tournament":
+    {
+      "type": "League",
+      "phase": "Main",
+      "season": 1
+    },
+  "teams": [
+    {
+      "full_name": "New York Rangers",
+      "short_name": "NYR",
+      "id": 741,
+      "home_arena": {
+        "name": "Broadway Park",
+        "id": 8854,
+        "capacity": 3000
+      },
+      "players": [
+        {
+        "name": "Falcao",
+          "id": 1,
+          "stats": {
+            "matches": 0,
+            "goals": 0
+          }
+        },
+        {
+        "name": "Chris Charlton",
+          "id": 19,
+          "stats": {
+            "matches": 0,
+            "goals": 0
+          }
+        },
+        {
+        "name": "Thomas Hempshey",
+          "id": 15,
+          "stats": {
+            "matches": 0,
+            "goals": 0
+          }
+        },
+        {
+        "name": "Ben Yates",
+          "id": 4,
+          "stats": {
+            "matches": 0,
+            "goals": 0
+          }
+        }
+      ]
+    },
+    {
+      "full_name": "Toronto Maple Leafs",
+      "short_name": "TOR",
+      "id": 742,
+      "home_arena": {
+        "name": "Maple Park Center",
+        "id": 8915,
+        "capacity": 2250
+      },
+      "players": [
+        {
+        "name": "John Darnell",
+          "id": 7,
+          "stats": {
+            "matches": 0,
+            "goals": 0
+          }
+        },
+        {
+        "name": "Ian Vaughan",
+          "id": 10,
+          "stats": {
+            "matches": 0,
+            "goals": 0
+          }
+        },
+        {
+        "name": "Paul Stevens",
+          "id": 11,
+          "stats": {
+            "matches": 0,
+            "goals": 0
+          }
+        },
+        {
+        "name": "Martin Johnson",
+          "id": 17,
+          "stats": {
+            "matches": 0,
+            "goals": 0
+          }
+        }
+      ]
+    },
+    {
+      "full_name": "Boston Bruins",
+      "short_name": "BOS",
+      "id": 780,
+      "home_arena": {
+        "name": "Boston Gardens",
+        "id": 8005,
+        "capacity": 1000
+      },
+      "players": [
+        {
+        "name": "Ben Schroeder",
+          "id": 3,
+          "stats": {
+            "matches": 0,
+            "goals": 0
+          }
+        },
+        {
+        "name": "Bill Clinton",
+          "id": 20,
+          "stats": {
+            "matches": 0,
+            "goals": 0
+          }
+        },
+        {
+        "name": "David Cattermole",
+          "id": 5,
+          "stats": {
+            "matches": 0,
+            "goals": 0
+          }
+        },
+        {
+        "name": "Rob Hayes",
+          "id": 13,
+          "stats": {
+            "matches": 0,
+            "goals": 0
+          }
+        }
+      ]
+    },
+    {
+      "full_name": "Montreal Canadiens",
+      "short_name": "MTL",
+      "id": 709,
+      "home_arena": {
+        "name": "Ville-Marie Hall",
+        "id": 7659,
+        "capacity": 8000
+      },
+      "players": [
+        {
+        "name": "Teddy Mitchell",
+          "id": 6,
+          "stats": {
+            "matches": 0,
+            "goals": 0
+          }
+        },
+        {
+        "name": "Josh Beagle",
+          "id": 2,
+          "stats": {
+            "matches": 0,
+            "goals": 0
+          }
+        },
+        {
+        "name": "Mike Blitch",
+          "id": 22,
+          "stats": {
+            "matches": 0,
+            "goals": 0
+          }
+        },
+        {
+        "name": "Dean Ford",
+          "id": 16,
+          "stats": {
+            "matches": 0,
+            "goals": 0
+          }
+        }
+      ]
+    },
+    {
+      "full_name": "Cleveland Cavaliers",
+      "short_name": "CLE",
+      "id": 733,
+      "home_arena": {
+        "name": "Ohio State Center",
+        "id": 7800,
+        "capacity": 2500
+      },
+      "players": [
+        {
+        "name": "Danny Hartley",
+          "id": 9,
+          "stats": {
+            "matches": 0,
+            "goals": 0
+          }
+        },
+        {
+        "name": "Marc Boisons",
+          "id": 8,
+          "stats": {
+            "matches": 0,
+            "goals": 0
+          }
+        },
+        {
+        "name": "Pierre Fauvèle",
+          "id": 12,
+          "stats": {
+            "matches": 0,
+            "goals": 0
+          }
+        },
+        {
+        "name": "Wayne Simmonds",
+          "id": 23,
+          "stats": {
+            "matches": 0,
+            "goals": 0
+          }
+        }
+      ]
+    },
+    {
+      "full_name": "Pittsburgh Pirates",
+      "short_name": "PIT",
+      "id": 785,
+      "home_arena": {
+        "name": "Central Park of Pittsburgh",
+        "id": 9432,
+        "capacity": null
+      },
+      "players": [
+        {
+          "name": "Brian O'Neal",
+          "id": 21,
+          "stats": {
+            "matches": 0,
+            "goals": 0
+          }
+        },
+        {
+          "name": "Lisandro López",
+          "id": 14,
+          "stats": {
+            "matches": 0,
+            "goals": 0
+          }
+        },
+        {
+          "name": "Ned Kelly",
+          "id": 18,
+          "stats": {
+            "matches": 0,
+            "goals": 0
+          }
+        },
+        {
+          "name": "Henry Potter",
+          "id": 24,
+          "stats": {
+            "matches": 0,
+            "goals": 0
+          }
+        }
+      ]
+    }
+  ],
+  "matches": [
+    {
+      "id": 1,
+      "round": 1,
+      "home_team": 5,
+      "away_team": 1,
+      "status": "Finished",
+      "home_goals": 1,
+      "away_goals": 2
+    },
+    {
+      "id": 2,
+      "round": 1,
+      "home_team": 2,
+      "away_team": 3,
+      "status": "After OT",
+      "home_goals": 2,
+      "away_goals": 3
+    },
+    {
+      "id": 3,
+      "round": 1,
+      "home_team": 1,
+      "away_team": 4,
+      "status": "After OT",
+      "home_goals": 1,
+      "away_goals": 2
+    }
+  ]
+}
