@@ -1,0 +1,192 @@
+{
+  "teams": [
+    {
+      "id": 26104,
+      "stage": [
+        {
+          "full_name": "New York Rangers",
+          "name_abb3": "NYR",
+          "start_season": 1,
+          "end_season": 1,
+          "stadium": {
+            "name": "Broadway Park",
+            "capacity": 3000
+          },
+          "location": {
+            "city": "New York City",
+            "region": "New York",
+            "country": "USA"
+          }
+        },
+        {
+          "full_name": "New York Rangers",
+          "name_abb3": "NYR",
+          "start_season": 2,
+          "end_season": null,
+          "stadium": {
+            "name": "Broadway Park",
+            "capacity": 4000
+          },
+          "location": {
+            "city": "New York City",
+            "region": "New York",
+            "country": "USA"
+          }
+        }
+      ]
+    },
+    {
+      "id": 70968,
+      "stage": [
+        {
+          "full_name": "Pittsburgh Pirates",
+          "name_abb3": "PIT",
+          "start_season": 1,
+          "end_season": null,
+          "stadium": {
+            "name": "Central Park of Pittsburgh",
+            "id": 9432,
+            "capacity": null
+          },
+          "location": {
+            "city": "Pittsburgh",
+            "region": "Pennsylvania",
+            "country": "USA"
+          }
+        }
+      ]
+    },
+    {
+      "id": 51941,
+      "stage": [
+        {
+          "full_name": "Toronto Maple Leafs",
+          "name_abb3": "TOR",
+          "start_season": 1,
+          "end_season": 2,
+          "stadium": {
+            "name": "Maple Park Center",
+            "id": 8915,
+            "capacity": 2250
+          },
+          "location": {
+            "city": "Toronto",
+            "region": "Ontario",
+            "country": "Canada"
+          }
+        },
+        {
+          "full_name": "Toronto Maple Leafs",
+          "name_abb3": "TOR",
+          "start_season": 3,
+          "end_season": null,
+          "stadium": {
+            "name": "Maple Park Center",
+            "id": 8915,
+            "capacity": 4250
+          },
+          "location": {
+            "city": "Toronto",
+            "region": "Ontario",
+            "country": "Canada"
+          }
+        }
+      ]
+    },
+    {
+      "id": 2787,
+      "stage": [
+        {
+          "full_name": "Montreal Canadiens",
+          "name_abb3": "MTL",
+          "start_season": 1,
+          "end_season": null,
+          "stadium": {
+            "name": "Ville-Marie Hall",
+            "id": 7659,
+            "capacity": 8000
+          },
+          "location": {
+            "city": "Montreal",
+            "region": "Quebec",
+            "country": "Canada"
+          }
+        }
+      ]
+    },
+    {
+      "id": 90423,
+      "stage": [
+        {
+          "full_name": "Boston Bruins",
+          "name_abb3": "BOS",
+          "start_season": 1,
+          "end_season": 3,
+          "stadium": {
+            "name": "Boston Gardens",
+            "id": 8005,
+            "capacity": 1000
+          },
+          "location": {
+            "city": "Boston",
+            "region": "Massachusetts",
+            "country": "USA"
+          }
+        },
+        {
+          "full_name": "Boston Bruins",
+          "name_abb3": "BOS",
+          "start_season": 4,
+          "end_season": 5,
+          "stadium": {
+            "name": "Fenway Park",
+            "id": 8006,
+            "capacity": 2000
+          },
+          "location": {
+            "city": "Boston",
+            "region": "Massachusetts",
+            "country": "USA"
+          }
+        },
+        {
+          "full_name": "Boston Bruins",
+          "name_abb3": "BOS",
+          "start_season": 5,
+          "end_season": null,
+          "stadium": {
+            "name": "Boston Gardens",
+            "id": 8005,
+            "capacity": 10000
+          },
+          "location": {
+            "city": "Boston",
+            "region": "Massachusetts",
+            "country": "USA"
+          }
+        }
+      ]
+    },
+    {
+      "id": 17858,
+      "stage": [
+        {
+          "full_name": "Cleveland Cavaliers",
+          "name_abb3": "CLE",
+          "start_season": 1,
+          "end_season": null,
+          "stadium": {
+            "name": "Ohio State Center",
+            "id": 7800,
+            "capacity": 2500
+          },
+          "location": {
+            "city": "Cleveland",
+            "region": "Ohio",
+            "country": "USA"
+          }
+        }
+      ]
+    }
+  ]
+}

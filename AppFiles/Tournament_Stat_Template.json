@@ -1,0 +1,7 @@
+{
+  "tournament_name":
+    {
+      "National League Season 1": ["goals_scored", "shots_on_goal", "shots_off_goal", "blocked_shots", "fouls_committed", "penalty_kicks_converted", "penalty_kicks_missed"],
+      "National League Season 64": ["goals_scored", "shots_on_goal", "shots_off_goal", "blocked_shots", "fouls_committed", "penalty_kicks_converted", "penalty_kicks_missed", "passes_total", "passes_completed", "yellow_cards", "red_cards", "tackles_successful", "expected_goals", "attacking_in_seconds", "attacks", "dangerous_attacks"]
+    }
+}

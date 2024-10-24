@@ -276,10 +276,33 @@
       "id": 1,
       "round": 1,
       "home_team": 5,
-      "away_team": 1,
+      "away_team": 0,
       "status": "Finished",
       "home_goals": 1,
-      "away_goals": 2
+      "away_goals": 2,
+      "incidents": {
+        "0": {
+          "time": "3",
+          "type": "goal",
+          "team_side": "away",
+          "player_id": 1,
+          "assistant_id": null
+        },
+        "1": {
+          "time": "18",
+          "type": "goal",
+          "team_side": "home",
+          "player_id": 14,
+          "assistant_id": null
+        },
+        "2": {
+          "time": "34",
+          "type": "goal",
+          "team_side": "away",
+          "player_id": 4,
+          "assistant_id": null
+        }
+      }
     },
     {
       "id": 2,
@@ -288,7 +311,44 @@
       "away_team": 3,
       "status": "After OT",
       "home_goals": 2,
-      "away_goals": 3
+      "away_goals": 3,
+      "incidents": {
+        "0": {
+          "time": "10",
+          "type": "goal",
+          "team_side": "home",
+          "player_id": 3,
+          "assistant_id": null
+        },
+        "1": {
+          "time": "24",
+          "type": "goal",
+          "team_side": "away",
+          "player_id": 2,
+          "assistant_id": null
+        },
+        "2": {
+          "time": "30",
+          "type": "goal",
+          "team_side": "home",
+          "player_id": 5,
+          "assistant_id": null
+        },
+        "3": {
+          "time": "38",
+          "type": "goal",
+          "team_side": "away",
+          "player_id": 2,
+          "assistant_id": null
+        },
+        "4": {
+          "time": "43",
+          "type": "goal",
+          "team_side": "away",
+          "player_id": 2,
+          "assistant_id": null
+        }
+      }
     },
     {
       "id": 3,
@@ -297,7 +357,30 @@
       "away_team": 4,
       "status": "After OT",
       "home_goals": 1,
-      "away_goals": 2
+      "away_goals": 2,
+      "incidents": {
+        "0": {
+          "time": "6",
+          "type": "goal",
+          "team_side": "away",
+          "player_id": 9,
+          "assistant_id": null
+        },
+        "1": {
+          "time": "18",
+          "type": "goal",
+          "team_side": "away",
+          "player_id": 8,
+          "assistant_id": null
+        },
+        "2": {
+          "time": "36",
+          "type": "goal",
+          "team_side": "home",
+          "player_id": 11,
+          "assistant_id": null
+        }
+      }
     }
   ]
 }

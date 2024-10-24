@@ -4,39 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38f58b63-4034-4802-b0f1-dc828be36eda" name="Changes" comment="První PYTHON APP Git Official">
-      <change afterPath="$PROJECT_DIR$/AppFiles/Data/MK Liga 1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppFiles/Data/MK Liga 77.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Generator/Edit Logos and Flags.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Generator/Generated Logos and Flags/Finland.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Generator/Generated Logos and Flags/Pink.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Generator/Generated Logos and Flags/Reflex.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Generator/Generated Logos and Flags/Schmidt L..png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Generator/Generated Logos and Flags/Sennkel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Generator/Generated Logos and Flags/Stuttgart Kickers.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Generator/Generated Logos and Flags/Sudan.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Generator/Generated Logos and Flags/TNEU-Ternopil.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Generator/Generated Logos and Flags/Thailand.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Generator/Generated Logos and Flags/Thomas Bata FC.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Generator/Generated Logos and Flags/Turkey.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Generator/Generated Logos and Flags/Vejle BK.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Generator/Generated Logos and Flags/Újpest FC.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Generator/Generated Logos and Flags/Škoda Mladá Boleslav.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Generator/Generated Logos and Flags/Žalgiris Vilnius.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Generator/Tournaments.py" afterDir="false" />
+    <list default="true" id="38f58b63-4034-4802-b0f1-dc828be36eda" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/AppFiles/Data/teams.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AppFiles/Data/test_statistics.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AppFiles/Tournament_Stat_Template.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Generator/JSON Opener.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Data/Teams/Finland.png" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Data/Test/Finland.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Data/Teams/Pink.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Data/Test/Pink.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Data/Teams/Reflex.png" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Data/Test/Reflex.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Data/Teams/Schmidt L..jpg" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Data/Test/Schmidt L..jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Data/Teams/Sennkel.png" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Data/Test/Sennkel.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Data/Teams/Stuttgart Kickers.png" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Data/Test/Stuttgart Kickers.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Data/Teams/Sudan.png" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Data/Test/Sudan.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Data/Teams/TNEU-Ternopil.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Data/Test/TNEU-Ternopil.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Data/Teams/Thailand.png" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Data/Test/Thailand.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Data/Teams/Thomas Bata FC.gif" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Data/Test/Thomas Bata FC.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Data/Teams/Turkey.webp" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Data/Test/Turkey.webp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppFiles/Data/Teams/Vejle BK.gif" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Data/Test/Vejle BK.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppFiles/Data/National League 1.json" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/Data/National League 1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppFiles/main_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/AppFiles/main_window.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,20 +39,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Python.Edit Logos and Flags.executor": "Run",
-    "Python.Generate JSON.executor": "Run",
-    "Python.Tournaments.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.main_window.executor": "Run",
-    "Python.players.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/marti/PycharmProjects/Football-Database-Manager/AppFiles/Data/Test"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Python.Edit Logos and Flags.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Generate JSON.executor&quot;: &quot;Run&quot;,
+    &quot;Python.JSON Opener.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Tournaments.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main_window.executor&quot;: &quot;Run&quot;,
+    &quot;Python.players.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/marti/PycharmProjects/Football-Database-Manager/AppFiles/Data/Test&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\marti\PycharmProjects\Football-Database-Manager\AppFiles\Data\Test" />
@@ -111,12 +87,21 @@
       <option name="project" value="LOCAL" />
       <updated>1725905455898</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Vytvoření nových Generátorů: JSON Tournament, Edit Logos and Flags.">
+      <option name="closed" value="true" />
+      <created>1725908613204</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1725908613204</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="První PYTHON APP Git Official" />
-    <option name="LAST_COMMIT_MESSAGE" value="První PYTHON APP Git Official" />
+    <MESSAGE value="Vytvoření nových Generátorů: JSON Tournament, Edit Logos and Flags." />
+    <option name="LAST_COMMIT_MESSAGE" value="Vytvoření nových Generátorů: JSON Tournament, Edit Logos and Flags." />
   </component>
 </project>

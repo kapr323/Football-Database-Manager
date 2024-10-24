@@ -3,7 +3,7 @@ import traceback
 import json
 from PyQt5.QtWidgets import QMainWindow, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QFileDialog, \
     QTableWidget, QTableWidgetItem, QWidget, QTabWidget, QAction, QMenuBar, QMessageBox, QSizePolicy, \
-    QProgressDialog
+    QProgressDialog, QDialog, QGridLayout
 from PyQt5.QtGui import QPixmap, QFont, QIcon, QMovie
 from PyQt5.QtCore import Qt, QTimer
 from new_match_dialog import NewMatchDialog
@@ -45,6 +45,19 @@ class MainApp(QMainWindow):
         self.create_menu()
 
         self.apply_styles()
+
+    def show_match_details(self, match_id):
+        matches = self.data.get('matches', [])
+        teams = self.data.get('teams', [])
+
+        # Najít zápas podle ID
+        match = next((m for m in matches if m['id'] == match_id), None)
+        if match:
+            print(f"Match found: {match}")  # Pro ladění
+            dialog = self.MatchDetailDialog(match, teams, self)
+            dialog.exec_()
+        else:
+            print(f"Match with ID {match_id} not found!")  # Pro ladění
 
     def create_home_tab(self):
         self.home_tab = QWidget()
@@ -267,7 +280,7 @@ class MainApp(QMainWindow):
     def load_file(self, file_name):
         self.current_file = file_name
         try:
-            with open(self.current_file, 'r') as f:
+            with open(self.current_file, 'r', encoding='utf-8') as f:
                 self.data = json.load(f)
             print("File loaded successfully:", file_name)  # Pro ladění
             self.update_tables()
@@ -313,36 +326,176 @@ class MainApp(QMainWindow):
                 self.matches_table.setItem(row_position, 0, QTableWidgetItem(home_team))
                 self.matches_table.setItem(row_position, 1, QTableWidgetItem(away_team))
                 self.matches_table.setItem(row_position, 2, QTableWidgetItem(result))
-                self.matches_table.setItem(row_position, 3, QTableWidgetItem('Edit'))
+
+                # Vytvoření tlačítka "Detail"
+                detail_button = QPushButton('Detail')
+                detail_button.clicked.connect(lambda _, m_id=match['id']: self.show_match_details(m_id))
+                self.matches_table.setCellWidget(row_position, 3, detail_button)
         except Exception as e:
             print(f"Unexpected error: {e}")
             traceback.print_exc()  # Zobrazí podrobnosti o chybě
 
+    class MatchDetailDialog(QDialog):
+        def __init__(self, match, teams, parent=None):
+            super().__init__(parent)
+            self.setWindowTitle(f"Match Details - ID: {match['id']}")
+
+            # Vytvoříme layout pro hlavní obsah
+            layout = QVBoxLayout()
+
+            # Layout pro loga a skóre
+            top_layout = QHBoxLayout()
+
+            # Domácí tým
+            home_team_logo = self.get_team_logo(match['home_team'], teams)
+            home_team_label = QLabel()
+            home_team_label.setPixmap(home_team_logo)
+            top_layout.addWidget(home_team_label)
+
+            # Skóre uprostřed
+            score_label = QLabel(f"{match['home_goals']} : {match['away_goals']}")
+            score_label.setAlignment(Qt.AlignCenter)
+            score_label.setFont(QFont('Arial', 24, QFont.Bold))  # Větší písmo a tučné
+            top_layout.addWidget(score_label)
+
+            # Hostující tým
+            away_team_logo = self.get_team_logo(match['away_team'], teams)
+            away_team_label = QLabel()
+            away_team_label.setPixmap(away_team_logo)
+            top_layout.addWidget(away_team_label)
+
+            layout.addLayout(top_layout)
+
+            # Zobrazení statusu zápasu
+            status_label = QLabel(match.get('status', 'Unknown'))
+            status_label.setAlignment(Qt.AlignCenter)
+            status_label.setFont(QFont('Arial', 14, QFont.Normal))  # Menší písmo pro status
+            layout.addWidget(status_label)
+
+            # Layout pro incidenty
+            incidents_layout = QGridLayout()
+            home_incidents_label = QLabel("Home Incidents:")
+            away_incidents_label = QLabel("Away Incidents:")
+            incidents_layout.addWidget(home_incidents_label, 0, 0)
+            incidents_layout.addWidget(away_incidents_label, 0, 1)
+
+            home_incidents = match.get('incidents', {}).values()
+            away_incidents = match.get('incidents', {}).values()
+
+            # Filtrujeme incidenty podle strany týmu
+            home_incidents = [inc for inc in home_incidents if inc['team_side'] == 'home']
+            away_incidents = [inc for inc in away_incidents if inc['team_side'] == 'away']
+
+            # Zobrazení incidentů - Domácí tým
+            for i, incident in enumerate(home_incidents):
+                time = incident.get('time', 'N/A')
+                incident_type = incident.get('type', 'N/A')
+                player_name = self.get_player_name(incident['player_id'], teams[match['home_team']])
+
+                incident_layout = QHBoxLayout()  # Pro zobrazení ikony a textu vedle sebe
+
+                if incident_type.lower() == "goal":  # Pokud je incident "gól"
+                    goal_icon = QLabel()
+                    goal_pixmap = QPixmap('Data/Icons/goal.png')
+                    goal_icon.setPixmap(goal_pixmap.scaled(16, 16, Qt.KeepAspectRatio, Qt.SmoothTransformation))
+                    incident_layout.addWidget(goal_icon)
+
+                # Text s incidentem
+                incident_text = QLabel(f"{time}' - {incident_type} by {player_name}")
+                incident_text.setAlignment(Qt.AlignLeft)  # Zarovnání textu vlevo
+                incident_layout.addWidget(incident_text)
+
+                # Přidáme layout s ikonou a textem do mřížky
+                incidents_layout.addLayout(incident_layout, i + 1, 0)
+
+                # Nastavíme zarovnání layoutu incidentů domácího týmu vlevo
+                incidents_layout.setAlignment(incident_layout, Qt.AlignLeft)
+
+            # Zobrazení incidentů - Hostující tým
+            for i, incident in enumerate(away_incidents):
+                time = incident.get('time', 'N/A')
+                incident_type = incident.get('type', 'N/A')
+                player_name = self.get_player_name(incident['player_id'], teams[match['away_team']])
+
+                incident_layout = QHBoxLayout()  # Pro zobrazení ikony a textu vedle sebe
+
+                # Text s incidentem
+                incident_text = QLabel(f"{time}' - {incident_type} by {player_name}")
+                incident_layout.addWidget(incident_text)
+
+                if incident_type.lower() == "goal":  # Pokud je incident "gól"
+                    goal_icon = QLabel()
+                    goal_pixmap = QPixmap('Data/Icons/goal.png')
+                    goal_icon.setPixmap(goal_pixmap.scaled(16, 16, Qt.KeepAspectRatio, Qt.SmoothTransformation))
+                    incident_layout.addWidget(goal_icon)
+
+                # Přidáme layout s ikonou a textem do mřížky
+                incidents_layout.addLayout(incident_layout, i + 1, 1)
+
+            layout.addLayout(incidents_layout)
+            self.setLayout(layout)
+
+        def get_team_logo(self, team_id, teams):
+            # Získání loga týmu nebo zobrazení N/A
+            team = teams[team_id]
+            logo_path = f'logos/{team["id"]}.png'  # Cesta k logu
+            if os.path.exists(logo_path):
+                pixmap = QPixmap(logo_path)
+                return pixmap.scaled(64, 64, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+            else:
+                return QPixmap()  # Pokud logo neexistuje, vrátí prázdný QPixmap
+
+        def get_player_name(self, player_id, team):
+            # Vyhledání jména hráče podle player_id v týmu
+            for player in team['players']:
+                if player['id'] == player_id:
+                    return player['name']
+            # Pokud hráč není nalezen, vrátí se player_id jako fallback
+            return f"Player ID: {player_id}"
+
     def update_teams_table(self):
         teams_stats = calculate_team_statistics(self.data)
+        teams = self.data.get('teams', [])  # Získání seznamu týmů
+
         self.teams_table.setRowCount(0)
-        for team, stats in sorted(teams_stats.items(), key=lambda x: (
-        -x[1]['points'], -x[1]['goal_difference'], -x[1]['goals_for'], -x[1]['won'], -x[1]['drawn'])):
+
+        for team_id, stats in teams_stats.items():  # team_id je klíč, stats je slovník statistik
             row_position = self.teams_table.rowCount()
             self.teams_table.insertRow(row_position)
-            self.teams_table.setItem(row_position, 0, QTableWidgetItem(team))
-            self.teams_table.setItem(row_position, 1, QTableWidgetItem(str(stats['played'])))
-            self.teams_table.setItem(row_position, 2, QTableWidgetItem(str(stats['won'])))
-            self.teams_table.setItem(row_position, 3, QTableWidgetItem(str(stats['drawn'])))
-            self.teams_table.setItem(row_position, 4, QTableWidgetItem(str(stats['lost'])))
-            self.teams_table.setItem(row_position, 5, QTableWidgetItem(str(stats['goals_for'])))
-            self.teams_table.setItem(row_position, 6, QTableWidgetItem(str(stats['goals_against'])))
-            self.teams_table.setItem(row_position, 7, QTableWidgetItem(str(stats['goal_difference'])))
-            points_item = QTableWidgetItem(str(stats['points']))
+
+            # Získání názvu týmu z teams array podle indexu
+            if isinstance(team_id, int) and 0 <= team_id < len(teams):
+                team_name = teams[team_id]['full_name']
+            else:
+                team_name = 'Unknown'
+
+            # Vyplnění tabulky
+            self.teams_table.setItem(row_position, 0, QTableWidgetItem(team_name))  # Abecední řazení
+            self.teams_table.setItem(row_position, 1, NumericSortItem(str(stats.get('played', 0))))
+            self.teams_table.setItem(row_position, 2, NumericSortItem(str(stats.get('won', 0))))
+            self.teams_table.setItem(row_position, 3, NumericSortItem(str(stats.get('drawn', 0))))
+            self.teams_table.setItem(row_position, 4, NumericSortItem(str(stats.get('lost', 0))))
+            self.teams_table.setItem(row_position, 5, NumericSortItem(str(stats.get('goals_for', 0))))
+            self.teams_table.setItem(row_position, 6, NumericSortItem(str(stats.get('goals_against', 0))))
+            self.teams_table.setItem(row_position, 7, NumericSortItem(str(stats.get('goal_difference', 0))))
+
+            points_item = NumericSortItem(str(stats.get('points', 0)))  # Číselné řazení
             points_item.setFont(QFont('Arial', weight=QFont.Bold))
             self.teams_table.setItem(row_position, 8, points_item)
+
+        # Povolit řazení
+        self.teams_table.setSortingEnabled(True)
+
+        # Výchozí řazení - nejvyšší priorita je "Pts", pak "GD" a nakonec "G+"
+        self.teams_table.sortByColumn(5, Qt.DescendingOrder)  # Nejprve podle vstřelených branek (G+)
+        self.teams_table.sortByColumn(7, Qt.DescendingOrder)  # Poté podle rozdílu branek (GD)
+        self.teams_table.sortByColumn(8, Qt.DescendingOrder)  # Nakonec podle bodů (Pts)
 
         # Adjust column widths
         self.teams_table.resizeColumnsToContents()
         self.teams_table.setColumnWidth(0, 150)  # Team column wider
         for i in range(1, 9):
-            if i != 0:  # Adjust other columns to be smaller
-                self.teams_table.setColumnWidth(i, 50)
+            self.teams_table.setColumnWidth(i, 50)
 
     def update_stats_table(self):
         self.stats_table.setRowCount(0)
